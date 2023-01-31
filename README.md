@@ -12,10 +12,16 @@ You will need to edit expect.exp to look up the appropriate item. You will need 
 
 # Usage
 
-`./hyak-login-shell.sh [username]`  puts you into an interactive shell on klone
+`./hyak-login-shell.sh [username]`  puts you into an interactive shell on klone.
 
-`./hyak-compute-shell.sh [username] [group]` puts you on an interactive shell on a compute node
+`./hyak-compute-shell.sh [username] [group]` puts you on an interactive shell on a compute node. The settings for memory, cores, and timeout are in the script.
 
-`./hyak-mount-home.sh [username]` mounts your home directory to /mnt/hyak with sshfs
+`./hyak-mount-home.sh [username]` mounts your home directory to /mnt/hyak with sshfs.
 
-If you want to run the scripts without arguments, you should change the default args in the script from my username and group to your own.
+The scripts will default your username to $USER and group to `stf`. If you have a different username locally I recommend editing the defaults on the scripts
+
+These scripts will work if they're symlinked into a bin directory as well.
+
+There are no safety checks, and hyak will lock you out if you have too many failed logins in a row. Please use these tools responsibly.
+
+

@@ -48,7 +48,7 @@ set password [ exec op read "op://Private/snw5haeuxvhnk5pgjcrdi6yyoi/password" ]
 
 # -ignore HUP makes an ssh mount work here
 set env(EXPECT_WRAPPED) 1
-spawn -ignore HUP ./[lindex $argv 0] [lrange $argv 1 end]
+spawn -ignore HUP [lindex $argv 0] [lrange $argv 1 end]
 
 match_max 100000
 expect -exact "\rPassword: "

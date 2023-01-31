@@ -4,10 +4,14 @@ set -o nounset
 set -o pipefail
 
 if [[ ! -v EXPECT_WRAPPED ]]; then
-	exec env ./expect.exp $0 "$@"
+	SCRIPT_FILE=$( readlink -f -- "$0")
+	SCRIPT_DIR=$(dirname -- "$SCRIPT_FILE")
+	exec env $SCRIPT_DIR/expect.exp $SCRIPT_FILE "$@"
 fi
 
-USER=${1:-'mtauraso'}
 
-sshfs -o default_permissions,idmap=user $USER@klone.hyak.uw.edu:/mmfs1/home/$USER /mnt/hyak
+USERNAME=${1:-$USER}
+
+
+sshfs -o default_permissions,idmap=user $USERNAME@klone.hyak.uw.edu:/mmfs1/home/$USERNAME /mnt/hyak
 
