@@ -55,14 +55,14 @@ expect -exact "\rPassword: "
 send -- $password
 send -- "\r"
 expect -exact "\r
-\rDuo two-factor login for mtauraso\r
+\rDuo two-factor login for "
+expect -exact "\r
 \r
 Enter a passcode or select one of the following options:\r
 \r
- 1. Duo Push to XXX-XXX-1937\r
- 2. Phone call to XXX-XXX-1937\r
-\r
-Passcode or option (1-2): "
+ 1. Duo Push to "
+
+expect -exact "Passcode or option (1-2): "
 send -- "1\r"
 expect -exact "1\r"
 
